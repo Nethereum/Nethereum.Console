@@ -14,6 +14,7 @@ namespace Nethereum.Console
             Description = "Calculates the total Ether balance of an account or accounts using the addresses provided";
             _addresses = Option("-a | --addr", "The address or addresses to calculate the total balance", CommandOptionType.MultipleValue);
             _rpcAddress = Option("-url", "The rpc address to connect", CommandOptionType.SingleValue);
+           
 
             HelpOption("-? | -h | --help");
             OnExecute((Func<int>)RunCommand);

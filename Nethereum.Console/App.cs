@@ -7,6 +7,7 @@ namespace Nethereum.Console
         public App()
         {
             Commands.Add(new CreateAccountCommand());
+            Commands.Add(new TransferEtherFromAccountFileCommand());
             Commands.Add(new CreateAccountsAndMixBalancesCommand());
             Commands.Add(new CalculateAccountsFolderTotalBalance());
             Commands.Add(new CalculateAccountsTotalBalance());

@@ -103,8 +103,8 @@ namespace Nethereum.Console
                 BigInteger currentAmount = 0;
                 currentAmount = await web3.Eth.GetBalance.SendRequestAsync(fromAccount.Address);
                 currentAmount = currentAmount - (web3.TransactionManager.DefaultGas * web3.TransactionManager.DefaultGasPrice);
-                var txn = await web3.Eth.TransactionManager.SendTransactionAsync(fromAccount.Address, accounts[0].Address, new HexBigInteger(currentAmount));
-                transfers.Add(txn);
+                    var txn = await web3.Eth.TransactionManager.SendTransactionAsync(fromAccount.Address, accounts[0].Address, new HexBigInteger(currentAmount));
+                    transfers.Add(txn);
             }
 
             return transfers;

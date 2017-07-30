@@ -1,4 +1,6 @@
-﻿using Nethereum.KeyStore;
+﻿using Nethereum.Hex.HexConvertors.Extensions;
+using Nethereum.Hex.HexTypes;
+using Nethereum.KeyStore;
 using Nethereum.Web3.Accounts;
 using System;
 using System.Collections.Generic;
@@ -38,6 +40,9 @@ namespace Nethereum.Console
         public Account LoadFromKeyStoreFile(string filePath, string password)
         {
             var keyStoreService = new KeyStoreService();
+
+            if (!File.Exists(filePath)) throw new Exception("Account keystore file not found");
+
             using (var file = File.OpenText(filePath))
             {
                 var json = file.ReadToEnd();
@@ -74,6 +79,28 @@ namespace Nethereum.Console
             }
 
             return Web3.Web3.Convert.FromWei(balance);
+        }
+
+        public bool ValidAddressLength(string address)
+        {
+            var checkAddress = address.RemoveHexPrefix();
+            return checkAddress.Length == 40;
+        }
+
+        public void CheckAddressLengthAndThrow(string address)
+        {
+            if (!ValidAddressLength(address)) throw new Exception("Invalid address length, should be 40 characters");
+        }
+
+        public async Task<string> TransferEther(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl)
+        {
+            CheckAddressLengthAndThrow(addressTo);
+
+            var weiAmount = Web3.Web3.Convert.ToWei(etherAmount);
+            var account = LoadFromKeyStoreFile(keyStoreFilePath, keyStorePassword);
+            var web3 = new Web3.Web3(account, rpcUrl);
+            var txn = await web3.Eth.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(weiAmount));
+            return txn;
         }
     }
 }

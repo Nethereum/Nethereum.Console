@@ -1,8 +1,10 @@
 ﻿using System;
 using Microsoft.Extensions.CommandLineUtils;
+using Nethereum.Hex.HexConvertors.Extensions;
 
 namespace Nethereum.Console
 {
+
     public class CreateAccountsAndMixBalancesCommand : CommandLineApplication
     {
         private readonly CommandOption _sourceDirectory;

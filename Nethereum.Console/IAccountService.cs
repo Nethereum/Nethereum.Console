@@ -10,5 +10,7 @@ namespace Nethereum.Console
         Account LoadFromKeyStoreFile(string filePath, string password);
         Task<decimal> CalculateTotalBalanceAccountsInFolder(string rpcAddress, string folder);
         Task<decimal> CalculateTotalBalanceAccounts(string rpcAddress, List<string> addresses);
+        bool ValidAddressLength(string address);
+        Task<string> TransferEther(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl);
     }
 }
