@@ -114,6 +114,8 @@ create-acccounts-mix-balances
 
 # TODO
 * ERC20 balance, transfer
+* Generare keystore file from private key, password
+* Generate private key, address
 * Message sign
 * Transfer overloads
 * Generic Smart contract call / transfer using abi and method
