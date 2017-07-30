@@ -12,8 +12,11 @@ Calculates the total balance (in Ether) of an account or accounts using the addr
 accounts-total-balance
 
 ### Parameters
+
   -a | --addr       The address or addresses to calculate the total balance
+
   -url              The rpc address to connect
+
   -? | -h | --help  Show help information
 
 ### Example
