@@ -25,7 +25,7 @@ Once it is built you can run any command directly from the same directory
 
 * [Create Account](#create-account)
 * [Account or Accounts Total Balance](#account-or-accounts-total-balance)
-* [Account or Accounts in Directory Total Balance](#Account-or-Accounts-in-Directory-Total-Balance)
+* [Account or Accounts in Directory Total Balance](#account-or-accounts-in-directory-total-balance)
 
 ## Create Account
 
