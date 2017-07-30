@@ -26,6 +26,7 @@ Once it is built you can run any command directly from the same directory
 * [Create Account](#create-account)
 * [Account or Accounts Total Balance](#account-or-accounts-total-balance)
 * [Account or Accounts in Directory Total Balance](#account-or-accounts-in-directory-total-balance)
+* [Account Transfer from Account File](#account-transfer-from-account-file)
 
 ## Create Account
 
@@ -75,8 +76,41 @@ accounts-dir-total-balance
 ```
 accounts-dir-total-balance -url "https://mainnet.infura.io:8545" -sd "c:\Users\JuanFran\NewAccount"
 ```
+## Account Transfer from Account File
+Transfers ether from a given acccount file (key store file) to another account
+### Command
+account-transfer-from-account-file
+
+### Parameters
+
+ * -af | --accountFile  The account key store file
+ * -ta | --toAddress    The address to send the ether to
+ * -p | --password      The account file password
+ * --url                The rpc address to connect
+ * --amount             The amount in Ether to send
+ * -? | -h | --help     Show help information
+
+### Example
+```
+dotnet run account-transfer-from-account-file --url "http://localhost:8545" -af "C:\testchain\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c" -p "password" -ta 0x13f022d72158410433cbd66f5dd8bf6d2d129924 --amount 0.1
+```
 
 ## Create accounts, mix and transfer
+This is a security feature, for a quick and simple move of all the ether balances from a set of accounts to a newly created set of accounts.
+
+Generates new accounts in a given directory, and mixes and transfer balances from the accounts in the source directory.
+
+### Command
+create-acccounts-mix-balances
+
+### Parameters
+
+*  -sd | --sourceDirectory       The directory containing the source accounts
+*  -dd | --destinationDirectory  The directory to create new accounts
+*  -p | --password               The generic password used for all the account files
+*  --url                         The rpc address to connect
+*  -na                           Optional: The number of accounts to create, defaults to 4
+*  -? | -h | --help              Show help information
 
 
 
