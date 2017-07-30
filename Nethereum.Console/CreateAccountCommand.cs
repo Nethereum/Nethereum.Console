@@ -6,15 +6,15 @@ namespace Nethereum.Console
 {
     public class CreateAccountCommand : CommandLineApplication
     {
-        private readonly CommandOption _destinationFolder;
+        private readonly CommandOption _destinationDirectory;
         private readonly CommandOption _password;
        
         public CreateAccountCommand()
         {
             Name = "create-account";
-            Description = "Creates an account and stores it in a given folder";
+            Description = "Creates an account and stores it in a given directory";
             _password = Option("-p | --password", "The password used for the account files", CommandOptionType.SingleValue);
-            _destinationFolder = Option("-df | --destinationFolder", "Optional: The folder to create the account file", CommandOptionType.SingleValue);
+            _destinationDirectory = Option("-dd | --destinationDirectory", "Optional: The folder to create the account file", CommandOptionType.SingleValue);
 
             HelpOption("-? | -h | --help");
             OnExecute((Func<int>)RunCommand);
@@ -23,7 +23,7 @@ namespace Nethereum.Console
         private int RunCommand()
         {
            
-            var destinationFolder = _destinationFolder.Value();
+            var destinationFolder = _destinationDirectory.Value();
             if (string.IsNullOrWhiteSpace(destinationFolder))
             {
                 destinationFolder = Directory.GetCurrentDirectory();

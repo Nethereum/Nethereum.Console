@@ -13,6 +13,9 @@ namespace Nethereum.Console
     {
         public Account CreateAccount(string password, string path)
         {
+            if (!Directory.Exists(path)){
+                Directory.CreateDirectory(path);
+            }
             //Generate a private key pair using SecureRandom
             var ecKey = Nethereum.Signer.EthECKey.GenerateKey();
             //Get the public address (derivied from the public key)
