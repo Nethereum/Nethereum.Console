@@ -96,9 +96,9 @@ dotnet run account-transfer-from-account-file --url "http://localhost:8545" -af 
 ```
 
 ## Create accounts, mix and transfer
-This is a security feature, for a quick and simple move of all the ether balances from a set of accounts to a newly created set of accounts.
+This is a security feature, for a quick and simple way to move of All the ether balances from a set of accounts to a newly created set of accounts. The amounts are transfered also randomly, achieving a "mix".
 
-Generates new accounts in a given directory, and mixes and transfer balances from the accounts in the source directory.
+TODO: Add a delay function for transfers
 
 ### Command
 create-acccounts-mix-balances
@@ -113,8 +113,7 @@ create-acccounts-mix-balances
 *  -? | -h | --help              Show help information
 
 
-
-#License
+# License
 
 MIT
 
