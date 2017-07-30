@@ -24,7 +24,7 @@ Once it is built you can run any command directly from the same directory
 # Commands
 
 * [Create Account](#create-account)
-* [Account/s Total Balance](#account/s-total-balance)
+* [Account or Accounts Total Balance](#account-or-accounts-total-balance)
 
 ## Create Account
 
@@ -43,8 +43,8 @@ create-account
 ```
 create-account -p "superpassword" -dd "c:\Users\JuanFran\NewAccount"
 ```
-## Account/s Total Balance
-Calculates the total balance (in Ether) of an account or accounts using the addresses provided
+## Account or Accounts Total Balance
+Calculates the total balance (in Ether) of an account or accounts using the address or addresses provided
 ### Command
 accounts-total-balance
 
