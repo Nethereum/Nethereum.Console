@@ -112,6 +112,11 @@ create-acccounts-mix-balances
 *  -na                           Optional: The number of accounts to create, defaults to 4
 *  -? | -h | --help              Show help information
 
+# TODO
+* ERC20 balance, transfer
+* Message sign
+* Transfer overloads
+* Generic Smart contract call / transfer using abi and method
 
 # License
 
