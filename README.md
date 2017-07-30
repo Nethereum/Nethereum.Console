@@ -23,6 +23,8 @@ Once it is built you can run any command directly from the same directory
 
 # Commands
 
+[Create Account](## Create Account)
+
 ## Create Account
 
 Creates an account and stores it in a given folder
