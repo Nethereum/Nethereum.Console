@@ -25,6 +25,7 @@ Once it is built you can run any command directly from the same directory
 
 * [Create Account](#create-account)
 * [Account or Accounts Total Balance](#account-or-accounts-total-balance)
+* [Account or Accounts in Directory Total Balance](#Account-or-Accounts-in-Directory-Total-Balance)
 
 ## Create Account
 
@@ -59,7 +60,20 @@ accounts-total-balance
 accounts-total-balance -url "https://mainnet.infura.io:8545" -a 0xb794f5ea0ba39494ce839613fffba74279579268 -a 0xe853c56864a2ebe4576a807d26fdc4a0ada51919
 ```
 
-## Acount/s in Folder Total Balance
+## Account or Accounts in Directory Total Balance
+Calculates the total Ether balance of all the accounts in a given directory
+### Command
+accounts-dir-total-balance
 
+### Parameters
+
+* -sd | --sourceDirectory  The directory containing the source accounts
+* -url                     The rpc address to connect
+* -? | -h | --help         Show help information
+
+### Example
+```
+accounts-dir-total-balance -url "https://mainnet.infura.io:8545" -sd "c:\Users\JuanFran\NewAccount"
+```
 
 ## Create accounts, mix and transfer
