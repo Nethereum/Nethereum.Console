@@ -23,7 +23,8 @@ Once it is built you can run any command directly from the same directory
 
 # Commands
 
-[Create Account](## Create Account)
+* [Create Account](#create-account)
+* [Account/s Total Balance](#account/s-total-balance)
 
 ## Create Account
 
@@ -42,10 +43,7 @@ create-account
 ```
 create-account -p "superpassword" -dd "c:\Users\JuanFran\NewAccount"
 ```
-
-## Acounts in Folder Total Balance
-
-## Accounts Total Balance
+## Account/s Total Balance
 Calculates the total balance (in Ether) of an account or accounts using the addresses provided
 ### Command
 accounts-total-balance
@@ -60,5 +58,8 @@ accounts-total-balance
 ```
 accounts-total-balance -url "https://mainnet.infura.io:8545" -a 0xb794f5ea0ba39494ce839613fffba74279579268 -a 0xe853c56864a2ebe4576a807d26fdc4a0ada51919
 ```
+
+## Acount/s in Folder Total Balance
+
 
 ## Create accounts, mix and transfer
