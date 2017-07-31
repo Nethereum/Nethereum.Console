@@ -22,17 +22,21 @@ namespace Nethereum.Console
         }
         public Account CreateAccount(string password, string path)
         {
-            if (!Directory.Exists(path)){
+            var ecKey = GenerateNewAccount();
+            return CreateAccount(password, ecKey, path);
+        }
+
+        public Account CreateAccount(string password, EthECKey key, string path)
+        {
+            if (!Directory.Exists(path))
+            {
                 Directory.CreateDirectory(path);
             }
 
-            var ecKey = GenerateNewAccount();
-            var address = ecKey.GetPublicAddress();
-
             //Create a store service, to encrypt and save the file using the web3 standard
             var service = new KeyStoreService();
-            var encryptedKey = service.EncryptAndGenerateDefaultKeyStoreAsJson(password, ecKey.GetPrivateKeyAsBytes(), address);
-            var fileName = service.GenerateUTCFileName(address);
+            var encryptedKey = service.EncryptAndGenerateDefaultKeyStoreAsJson(password, key.GetPrivateKeyAsBytes(), key.GetPublicAddress());
+            var fileName = service.GenerateUTCFileName(key.GetPublicAddress());
             //save the File
             using (var newfile = File.CreateText(Path.Combine(path, fileName)))
             {
@@ -40,7 +44,12 @@ namespace Nethereum.Console
                 newfile.Flush();
             }
 
-            return new Account(ecKey.GetPrivateKey());
+            return new Account(key.GetPrivateKey());
+        }
+
+        public Account CreateAccount(string password, string privateKey, string path)
+        {
+            return CreateAccount(password, new EthECKey(privateKey), path);
         }
 
         public Account LoadFromKeyStoreFile(string filePath, string password)

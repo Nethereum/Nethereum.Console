@@ -19,5 +19,6 @@ namespace Nethereum.Console
         Task<string> SendTransactionAsync(Account account, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data);
         Task<decimal> GetTokenBalanceAsync(string adddress, string contractAddress, string rpcUrl, int numberOfDecimalPlaces = 18);
         EthECKey GenerateNewAccount();
+        Account CreateAccount(string password, string privateKey, string path);
     }
 }
