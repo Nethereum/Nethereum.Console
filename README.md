@@ -23,12 +23,28 @@ Once it is built you can run any command directly from the same directory
 
 # Commands
 
+You can find the list of commands by executing  ```dotnet Nethereum.Console.dll -h```.
+
+*  ```accounts-dir-total-balance```                 Calculates the total Ether balance of all the accounts in a given directory
+ * ```accounts-total-balance```                     Calculates the total Ether balance of an account or accounts using the addresses provided
+  * ```account-total-token-balance```                 Returns the token balance of an account from a compliant ERC20 smart contract
+  * ```account-transfer-from-account-file```         Transfers ether from a given acccount file (key store file) to another account
+  * ```account-transfer-from-account-private-key```  Transfers ether using the account's private key
+  * ```create-acccounts-mix-balances```              Generates new accounts in a given directory, and mixes and transfer balances from the accounts in the source directory
+  * ```create-account```                             Creates an account and stores it in a given directory
+  * ```create-account-key-pair```                    Generates a new private key and ethereum address
+  * ```send-transaction-from-account-file```         Sends a transaction using the account's key store file
+  * ```send-transaction-from-account-private-key```  Sends a transaction using the account's private key
+
+
+## Commands help
+
 * [Create Account](#create-account)
 * [Account or Accounts Total Balance](#account-or-accounts-total-balance)
 * [Account or Accounts in Directory Total Balance](#account-or-accounts-in-directory-total-balance)
 * [Account Transfer from Account File](#account-transfer-from-account-file)
 
-There are more commands that listed here use ```dotnet Nethereum.Console.dll -h``` for more info.
+
 
 ## Create Account
 
