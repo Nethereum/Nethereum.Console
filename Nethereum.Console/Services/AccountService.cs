@@ -2,6 +2,7 @@
 using Nethereum.Hex.HexTypes;
 using Nethereum.KeyStore;
 using Nethereum.RPC.Eth.DTOs;
+using Nethereum.Signer;
 using Nethereum.Web3.Accounts;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,18 @@ namespace Nethereum.Console
 {
     public class AccountService : IAccountService
     {
+        public EthECKey GenerateNewAccount()
+        {
+            //Generate a private key pair using SecureRandom
+            return Nethereum.Signer.EthECKey.GenerateKey();
+        }
         public Account CreateAccount(string password, string path)
         {
             if (!Directory.Exists(path)){
                 Directory.CreateDirectory(path);
             }
-            //Generate a private key pair using SecureRandom
-            var ecKey = Nethereum.Signer.EthECKey.GenerateKey();
-            //Get the public address (derivied from the public key)
+
+            var ecKey = GenerateNewAccount();
             var address = ecKey.GetPublicAddress();
 
             //Create a store service, to encrypt and save the file using the web3 standard

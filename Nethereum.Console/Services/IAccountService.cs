@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
+using Nethereum.Signer;
 
 namespace Nethereum.Console
 {
@@ -17,5 +18,6 @@ namespace Nethereum.Console
         Task<string> SendTransactionAsync(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data);
         Task<string> SendTransactionAsync(Account account, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data);
         Task<decimal> GetTokenBalanceAsync(string adddress, string contractAddress, string rpcUrl, int numberOfDecimalPlaces = 18);
+        EthECKey GenerateNewAccount();
     }
 }

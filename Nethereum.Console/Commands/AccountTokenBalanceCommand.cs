@@ -3,6 +3,7 @@ using Microsoft.Extensions.CommandLineUtils;
 
 namespace Nethereum.Console
 {
+
     /// <example>
     ///  dotnet run account-total-token-balance --url "https://mainnet.infura.io:8545"  -a 0xd0a6e6c54dbc68db5db3a091b171a77407ff7ccf -ca 0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0
     /// </example>

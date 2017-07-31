@@ -113,11 +113,13 @@ create-acccounts-mix-balances
 *  -? | -h | --help              Show help information
 
 # TODO
-* ERC20 balance, transfer
+* SendTransaction (added for private key and key store file, this is done add readme usage)
+* ERC20 balance (done, add readme usage), transfer
 * Generare keystore file from private key, password
-* Generate private key, address
+* Generate private key, address (done, todo add readme usage)
+* Retrieve private key from key storage
 * Message sign
-* Transfer overloads
+* Deploy contract
 * Generic Smart contract call / transfer using abi and method
 
 # License
