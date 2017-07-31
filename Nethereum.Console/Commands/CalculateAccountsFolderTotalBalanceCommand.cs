@@ -5,17 +5,17 @@ using System.Numerics;
 
 namespace Nethereum.Console
 {
-    public class CalculateAccountsFolderTotalBalance : CommandLineApplication
+    public class CalculateAccountsFolderTotalBalanceCommand : CommandLineApplication
     {
         private readonly CommandOption _sourceDirectory;
         private readonly CommandOption _rpcAddress;
 
-        public CalculateAccountsFolderTotalBalance()
+        public CalculateAccountsFolderTotalBalanceCommand()
         {
             Name = "accounts-dir-total-balance";
             Description = "Calculates the total Ether balance of all the accounts in a given directory";
             _sourceDirectory = Option("-sd | --sourceDirectory", "The directory containing the source accounts", CommandOptionType.SingleValue);
-            _rpcAddress = Option("-url", "The rpc address to connect", CommandOptionType.SingleValue);
+            _rpcAddress = this.AddOptionRpcAddress();
             
             HelpOption("-? | -h | --help");
             OnExecute((Func<int>)RunCommand);

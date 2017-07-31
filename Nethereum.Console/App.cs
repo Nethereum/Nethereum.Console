@@ -6,13 +6,16 @@ namespace Nethereum.Console
     {
         public App()
         {
-            Commands.Add(new CreateAccountCommand());
-            Commands.Add(new TransferEtherFromAccountFileCommand());
-            Commands.Add(new CreateAccountsAndMixBalancesCommand());
-            Commands.Add(new CalculateAccountsFolderTotalBalance());
-            Commands.Add(new CalculateAccountsTotalBalance());
-            
+            var accountService = new AccountService();
 
+            Commands.Add(new CreateAccountCommand());
+            Commands.Add(new SendTransactionFromAccountFileCommand(accountService));
+            Commands.Add(new TransferEtherFromAccountFileCommand(accountService));
+            Commands.Add(new TransferEtherFromAccountPrivateKeyCommand(accountService));
+            Commands.Add(new CreateAccountsAndMixBalancesCommand());
+            Commands.Add(new CalculateAccountsFolderTotalBalanceCommand());
+            Commands.Add(new CalculateAccountsTotalBalanceCommand());
+            
             HelpOption("-h | -? | --help");
         }
     }

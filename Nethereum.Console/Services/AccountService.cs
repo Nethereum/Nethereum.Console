@@ -1,6 +1,7 @@
 ﻿using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Hex.HexTypes;
 using Nethereum.KeyStore;
+using Nethereum.RPC.Eth.DTOs;
 using Nethereum.Web3.Accounts;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace Nethereum.Console
                     addresses.Add(address);
                 }
             }
- 
+
             return await CalculateTotalBalanceAccounts(rpcAddress, addresses).ConfigureAwait(false);
         }
 
@@ -92,14 +93,42 @@ namespace Nethereum.Console
             if (!ValidAddressLength(address)) throw new Exception("Invalid address length, should be 40 characters");
         }
 
+        public async Task<string> TransferEther(Account account, string addressTo, decimal etherAmount, string rpcUrl)
+        {
+            return await SendTransaction(account, addressTo, etherAmount, rpcUrl, null, null, null).ConfigureAwait(false);
+        }
+
         public async Task<string> TransferEther(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl)
         {
-            CheckAddressLengthAndThrow(addressTo);
+            return await SendTransaction(keyStoreFilePath, keyStorePassword, addressTo, etherAmount, rpcUrl, null, null, null).ConfigureAwait(false);
+        }
 
-            var weiAmount = Web3.Web3.Convert.ToWei(etherAmount);
+        public async Task<string> SendTransaction(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data)
+        {
             var account = LoadFromKeyStoreFile(keyStoreFilePath, keyStorePassword);
+            return await SendTransaction(account, addressTo, etherAmount, rpcUrl, gas, gasPrice, data);
+        }
+
+        public async Task<string> SendTransaction(Account account, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data)
+        {
+            CheckAddressLengthAndThrow(addressTo);
+            BigInteger weiAmount = 0;
+            if (etherAmount > 0)
+            {
+                weiAmount = Web3.Web3.Convert.ToWei(etherAmount);
+            }
             var web3 = new Web3.Web3(account, rpcUrl);
-            var txn = await web3.Eth.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(weiAmount));
+            var transactionInput = new TransactionInput()
+            {
+                From = account.Address,
+                To = addressTo,
+                Value = new HexBigInteger(weiAmount),
+                Data = data,
+                Gas = gas,
+                GasPrice = gasPrice
+            };
+
+            var txn = await web3.Eth.TransactionManager.SendTransactionAsync(transactionInput).ConfigureAwait(false);
             return txn;
         }
     }
