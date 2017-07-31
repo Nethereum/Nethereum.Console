@@ -10,7 +10,7 @@ namespace Nethereum.Console
         public TransferEtherFromAccountPrivateKeyCommand(IAccountService accountService) : base(accountService)
         {
             Name = "account-transfer-from-account-private-key";
-            Description = "Transfers ether from a given acccount file (key store file) to another account";
+            Description = "Transfers ether using the account's private key";
         }
 
         protected override void InitOptions()

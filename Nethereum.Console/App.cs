@@ -10,6 +10,7 @@ namespace Nethereum.Console
 
             Commands.Add(new CreateAccountCommand());
             Commands.Add(new SendTransactionFromAccountFileCommand(accountService));
+            Commands.Add(new SendTransactionFromAccountPrivateKeyCommand(accountService));
             Commands.Add(new TransferEtherFromAccountFileCommand(accountService));
             Commands.Add(new TransferEtherFromAccountPrivateKeyCommand(accountService));
             Commands.Add(new CreateAccountsAndMixBalancesCommand());

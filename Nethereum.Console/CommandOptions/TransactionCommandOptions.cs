@@ -32,7 +32,9 @@ namespace Nethereum.Console
             base.ParseAndValidateInput();
             Data = DataOption.Value();
             Gas = GasOption.TryParseHexBigIntegerValue(HasInputErrors, false);
+            if (Gas != null && Gas.Value == 0) Gas = null;
             GasPrice = GasPriceOption.TryParseHexBigIntegerValue(HasInputErrors, false);
+            if (GasPrice != null && GasPrice.Value == 0) GasPrice = null;
         }
     
     }

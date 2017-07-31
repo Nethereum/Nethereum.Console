@@ -15,6 +15,7 @@ namespace Nethereum.Console
         Task<string> TransferEther(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl);
         Task<string> TransferEther(Account account, string addressTo, decimal etherAmount, string rpcUrl);
         Task<string> SendTransaction(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data);
+        Task<string> SendTransaction(Account account, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data);
 
     }
 }
