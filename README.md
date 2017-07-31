@@ -28,6 +28,8 @@ Once it is built you can run any command directly from the same directory
 * [Account or Accounts in Directory Total Balance](#account-or-accounts-in-directory-total-balance)
 * [Account Transfer from Account File](#account-transfer-from-account-file)
 
+There are more commands that listed here use ```dotnet Nethereum.Console.dll -h``` for more info.
+
 ## Create Account
 
 Creates an account and stores it in a given folder
