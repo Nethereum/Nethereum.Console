@@ -32,7 +32,7 @@ namespace Nethereum.Console
                 if (_accountKeyStoreCommandOption.HasInputErrors) return 1;
 
 
-                var txn = accountService.TransferEther(_accountKeyStoreCommandOption.AccountFile,
+                var txn = accountService.TransferEtherAsync(_accountKeyStoreCommandOption.AccountFile,
                                                         _accountKeyStoreCommandOption.Password,
                                                         _simpleTransactionCommandOption.ToAddress,
                                                         _simpleTransactionCommandOption.Amount.Value,

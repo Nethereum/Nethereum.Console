@@ -38,7 +38,7 @@ namespace Nethereum.Console
             }
 
             IAccountService accountService = new AccountService();
-            var balance = accountService.CalculateTotalBalanceAccountsInFolder(rpcAddress, sourceFolder).Result;
+            var balance = accountService.CalculateTotalBalanceAccountsInFolderAsync(rpcAddress, sourceFolder).Result;
             System.Console.WriteLine("Total Balance: " +  balance);
 
             return 0;

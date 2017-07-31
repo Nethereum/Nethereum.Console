@@ -59,6 +59,26 @@ namespace Nethereum.Console
             return null;
         }
 
+        public static int? TryParseAndValidateInt(this CommandOption option, bool hasInputErrors, bool required = true)
+        {
+            var value = option.Value();
+            if (required)
+                value = TryParseRequiredString(option, hasInputErrors);
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                int intValue = 0;
+                var passed = Int32.TryParse(value, out intValue);
+                if (!passed)
+                {
+                    System.Console.WriteLine(option.ShortName + "|" + option.LongName + " is not a valid integer");
+                    return null;
+                }
+                return intValue;
+            }
+            return null;
+        }
+
         public static HexBigInteger TryParseHexBigIntegerValue(this CommandOption option, bool hasInputErrors, bool required = true)
         {
             var value = option.Value();

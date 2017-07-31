@@ -16,6 +16,7 @@ namespace Nethereum.Console
             Commands.Add(new CreateAccountsAndMixBalancesCommand());
             Commands.Add(new CalculateAccountsFolderTotalBalanceCommand());
             Commands.Add(new CalculateAccountsTotalBalanceCommand());
+            Commands.Add(new AccountTokenBalanceCommand(accountService));
             
             HelpOption("-h | -? | --help");
         }

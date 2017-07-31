@@ -35,7 +35,7 @@ namespace Nethereum.Console
                     if (_accountKeyStoreCommandOption.HasInputErrors) return 1;
 
 
-                    var txn = accountService.SendTransaction(_accountKeyStoreCommandOption.AccountFile,
+                    var txn = accountService.SendTransactionAsync(_accountKeyStoreCommandOption.AccountFile,
                                                             _accountKeyStoreCommandOption.Password,
                                                             _transactionCommandOptions.ToAddress,
                                                             _transactionCommandOptions.Amount ?? _transactionCommandOptions.Amount.Value,

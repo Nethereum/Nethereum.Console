@@ -52,7 +52,7 @@ namespace Nethereum.Console
             }
         }
 
-        public async Task<Decimal> CalculateTotalBalanceAccountsInFolder(string rpcAddress, string folder)
+        public async Task<Decimal> CalculateTotalBalanceAccountsInFolderAsync(string rpcAddress, string folder)
         {
             var addresses = new List<string>();
             foreach (var file in Directory.GetFiles(folder))
@@ -66,10 +66,10 @@ namespace Nethereum.Console
                 }
             }
 
-            return await CalculateTotalBalanceAccounts(rpcAddress, addresses).ConfigureAwait(false);
+            return await CalculateTotalBalanceAccountsAsync(rpcAddress, addresses).ConfigureAwait(false);
         }
 
-        public async Task<Decimal> CalculateTotalBalanceAccounts(string rpcAddress, List<string> addresses)
+        public async Task<Decimal> CalculateTotalBalanceAccountsAsync(string rpcAddress, List<string> addresses)
         {
             BigInteger balance = 0;
             Web3.Web3 web3 = new Web3.Web3(rpcAddress);
@@ -93,23 +93,23 @@ namespace Nethereum.Console
             if (!ValidAddressLength(address)) throw new Exception("Invalid address length, should be 40 characters");
         }
 
-        public async Task<string> TransferEther(Account account, string addressTo, decimal etherAmount, string rpcUrl)
+        public async Task<string> TransferEtherAsync(Account account, string addressTo, decimal etherAmount, string rpcUrl)
         {
-            return await SendTransaction(account, addressTo, etherAmount, rpcUrl, null, null, null).ConfigureAwait(false);
+            return await SendTransactionAsync(account, addressTo, etherAmount, rpcUrl, null, null, null).ConfigureAwait(false);
         }
 
-        public async Task<string> TransferEther(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl)
+        public async Task<string> TransferEtherAsync(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl)
         {
-            return await SendTransaction(keyStoreFilePath, keyStorePassword, addressTo, etherAmount, rpcUrl, null, null, null).ConfigureAwait(false);
+            return await SendTransactionAsync(keyStoreFilePath, keyStorePassword, addressTo, etherAmount, rpcUrl, null, null, null).ConfigureAwait(false);
         }
 
-        public async Task<string> SendTransaction(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data)
+        public async Task<string> SendTransactionAsync(string keyStoreFilePath, string keyStorePassword, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data)
         {
             var account = LoadFromKeyStoreFile(keyStoreFilePath, keyStorePassword);
-            return await SendTransaction(account, addressTo, etherAmount, rpcUrl, gas, gasPrice, data);
+            return await SendTransactionAsync(account, addressTo, etherAmount, rpcUrl, gas, gasPrice, data);
         }
 
-        public async Task<string> SendTransaction(Account account, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data)
+        public async Task<string> SendTransactionAsync(Account account, string addressTo, decimal etherAmount, string rpcUrl, HexBigInteger gas, HexBigInteger gasPrice, string data)
         {
             CheckAddressLengthAndThrow(addressTo);
             BigInteger weiAmount = 0;
@@ -131,5 +131,14 @@ namespace Nethereum.Console
             var txn = await web3.Eth.TransactionManager.SendTransactionAsync(transactionInput).ConfigureAwait(false);
             return txn;
         }
+
+        public async Task<decimal> GetTokenBalanceAsync(string adddress, string contractAddress, string rpcUrl, int numberOfDecimalPlaces = 18)
+        {
+            var service = new StandardTokenEIP20.StandardTokenService(new Web3.Web3(rpcUrl), contractAddress);
+            var balance = await service.GetBalanceOfAsync<BigInteger>(adddress);
+            return Web3.Web3.Convert.FromWei(balance, numberOfDecimalPlaces);
+        }
+
+
     }
 }

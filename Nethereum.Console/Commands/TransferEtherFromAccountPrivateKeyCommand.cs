@@ -31,7 +31,7 @@ namespace Nethereum.Console
                 if (_privateKeyCommandOption.HasInputErrors) return 1;
 
 
-                var txn = accountService.TransferEther(new Account(_privateKeyCommandOption.PrivateKey),
+                var txn = accountService.TransferEtherAsync(new Account(_privateKeyCommandOption.PrivateKey),
                                                         _simpleTransactionCommandOption.ToAddress,
                                                         _simpleTransactionCommandOption.Amount.Value,
                                                         _simpleTransactionCommandOption.RpcAddress).Result;

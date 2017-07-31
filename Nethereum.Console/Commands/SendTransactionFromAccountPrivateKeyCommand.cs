@@ -37,7 +37,7 @@ namespace Nethereum.Console
                 if (_privateKeyCommandOption.HasInputErrors) return 1;
 
 
-                var txn = accountService.SendTransaction(new Account(_privateKeyCommandOption.PrivateKey),
+                var txn = accountService.SendTransactionAsync(new Account(_privateKeyCommandOption.PrivateKey),
                                                         _transactionCommandOptions.ToAddress,
                                                         _transactionCommandOptions.Amount ?? _transactionCommandOptions.Amount.Value,
                                                         _transactionCommandOptions.RpcAddress,
