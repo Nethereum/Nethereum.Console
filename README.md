@@ -76,7 +76,7 @@ accounts-total-balance
 
 ### Example
 ```
-accounts-total-balance -url "https://mainnet.infura.io:8545" -a 0xb794f5ea0ba39494ce839613fffba74279579268 -a 0xe853c56864a2ebe4576a807d26fdc4a0ada51919
+accounts-total-balance -url "https://mainnet.infura.io/v3/7238211010344719ad14a89db874158c:8545" -a 0xb794f5ea0ba39494ce839613fffba74279579268 -a 0xe853c56864a2ebe4576a807d26fdc4a0ada51919
 ```
 
 ## Account or Accounts in Directory Total Balance
@@ -92,7 +92,7 @@ accounts-dir-total-balance
 
 ### Example
 ```
-accounts-dir-total-balance -url "https://mainnet.infura.io:8545" -sd "c:\Users\JuanFran\NewAccount"
+accounts-dir-total-balance -url "https://mainnet.infura.io/v3/7238211010344719ad14a89db874158c:8545" -sd "c:\Users\JuanFran\NewAccount"
 ```
 ## Account Transfer from Account File
 Transfers ether from a given acccount file (key store file) to another account
@@ -139,6 +139,8 @@ create-acccounts-mix-balances
 * Message sign 
 * Deploy contract
 * Generic Smart contract call / transfer using abi and method
+
+Note: in this sample, a special INFURA API key is used: `7238211010344719ad14a89db874158c`. If you wish to use this sample in your own project you’ll need to [sign up on INFURA](https://infura.io/register) and use your own key.
 
 # License
 
